@@ -1,0 +1,130 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Graph2d | Shading Example</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+    .segment.red {
+      fill: #ff0000;
+      fill-opacity: 0;
+      stroke-width: 2px;
+      stroke: #ff0000;
+    }
+    .segment.green {
+      fill: #4CAF50;
+      fill-opacity: 0;
+      stroke-width: 2px;
+      stroke: #4CAF50;
+    }
+  </style>
+
+  <script src="vis.js"></script>
+  <link href="vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h2>Graph2d | Shading Example</h2>
+<div style="width:700px; font-size:14px; text-align: justify;">
+    This example shows the shading functionality within Graph2d. 
+</div>
+<br />
+
+<div id="visualization"></div>
+
+<script type="text/javascript">
+    // create a dataSet with groups
+    var groups = new vis.DataSet();
+
+    groups.add({
+        id: 1001,
+        className: 'segment red',
+        options: {
+            shaded: {
+                orientation: 'group',
+                groupId: '1002'
+            }
+        }});
+
+    groups.add({
+        id: 1002,
+        className: 'segment red'
+    });
+
+    groups.add({
+        id: 1011,
+        className: 'segment red',
+        options: {
+            shaded: {
+                orientation: 'group',
+                groupId: '1012'
+            }
+        }});
+
+    groups.add({
+        id: 1012,
+        className: 'segment red'
+    });
+
+    groups.add({
+        id: 1021,
+        className: 'segment green',
+        options: {
+            shaded: {
+                orientation: 'group',
+                groupId: '1022'
+            }
+        }});
+
+    groups.add({
+        id: 1022,
+        className: 'segment green'
+    });
+
+    groups.add({
+        id: 2
+    });
+
+  var container = document.getElementById('visualization');
+    var items = [
+        {x: '2014-06-19', y: 20, group: 1001},
+        {x: '2014-06-22', y: 20, group: 1001},
+        {x: '2014-06-19', y: -20, group: 1002},
+        {x: '2014-06-22', y: -20, group: 1002},
+        {x: '2014-06-22', y: 20, group: 1011},
+        {x: '2014-06-26', y: 20, group: 1011},
+        {x: '2014-06-22', y: -20, group: 1012},
+        {x: '2014-06-26', y: -20, group: 1012},
+        {x: '2014-06-26', y: 20, group: 1021},
+        {x: '2014-06-30', y: 20, group: 1021},
+        {x: '2014-06-26', y: -20, group: 1022},
+        {x: '2014-06-30', y: -20, group: 1022},
+        
+        {x: '2014-06-19', y: 2, group: 2},
+        {x: '2014-06-20', y: 17, group: 2},
+        {x: '2014-06-21', y: -13, group: 2},
+        {x: '2014-06-22', y: 2, group: 2},
+        {x: '2014-06-23', y: 5, group: 2},
+        {x: '2014-06-24', y: 12, group: 2},
+        {x: '2014-06-25', y: -9, group: 2},
+        {x: '2014-06-26', y: 2, group: 2},
+        {x: '2014-06-27', y: 2, group: 2},
+        {x: '2014-06-28', y: 15, group: 2},
+        {x: '2014-06-29', y: -12, group: 2},
+        {x: '2014-06-30', y: 2, group: 2},
+    ];
+
+  var dataset = new vis.DataSet(items);
+  var options = {
+      clickToUse: true,
+      start: '2014-06-07',
+      end: '2014-07-03'
+  };
+  var graph2d = new vis.Graph2d(container, dataset, groups, options);
+
+</script>
+</body>
+</html>
